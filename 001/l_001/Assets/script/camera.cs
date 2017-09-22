@@ -8,18 +8,25 @@ public class camera : MonoBehaviour {
 	float jumpPressure = 0f;  //蓄力值
 	float MinjumpPressure = 3f;  //蓄力最小值
 	public float MaxjumpPressure = 10f;  // 蓄力最大值
+	private Vector3 startPosition;
 	Rigidbody rbody;  
-	Animator animator;
 	// Use this for initialization
 	void Start () {
 		OnGround = true;  //初始设置在地面上
 		rbody = GetComponent<Rigidbody>();  //获取组件
+		startPosition = transform.position;
 		//animator = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
 	void Update () {
 		//print ("OnGround " + OnGround);
+		if (Input.GetButton ("reset")) {  // reset position
+			transform.TransformVector(startPosition);
+			print ("重置成功" + startPosition);
+			OnGround = true;
+			return;
+		}
 		if (OnGround)  //判断是否在地面上
 		{
 			if (Input.GetButton("Jump"))  //hold  按下(住)不放空格键
@@ -56,6 +63,8 @@ public class camera : MonoBehaviour {
 		var x = Input.GetAxis ("Horizontal") * Time.deltaTime * 5;
 		var z = Input.GetAxis("Vertical") * Time.deltaTime * 5;
 		transform.Translate (x, 0, z);
+
+
 	}
 	void OnCollisionEnter(Collision other)
 	{

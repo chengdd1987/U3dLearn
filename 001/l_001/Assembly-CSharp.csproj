@@ -51,7 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\script\bellte.cs" />
      <Compile Include="Assets\script\camera.cs" />
+     <Compile Include="Assets\script\gun.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>E:/GitHub/U3dLearn/001/l_001/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
